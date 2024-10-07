@@ -1,6 +1,8 @@
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define NO_ALT_REPEAT_KEY
 
+#define TAPPING_TERM 250
+
 // Mouse key speed and acceleration.
 #define MK_COMBINED
 #undef MOUSEKEY_DELAY
