@@ -2,6 +2,7 @@
 #define NO_ALT_REPEAT_KEY
 
 // Mouse key speed and acceleration.
+#define MK_COMBINED
 #undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY          0
 #undef MOUSEKEY_INTERVAL
