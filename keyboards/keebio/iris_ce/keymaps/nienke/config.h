@@ -1,7 +1,10 @@
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define NO_ALT_REPEAT_KEY
 
-#define TAPPING_TERM 250
+// Tap-hold configuration for home row mods.
+#define TAPPING_TERM 175
+#define PERMISSIVE_HOLD
+#define QUICK_TAP_TERM_PER_KEY
 
 // Mouse key speed and acceleration.
 #define MK_COMBINED
