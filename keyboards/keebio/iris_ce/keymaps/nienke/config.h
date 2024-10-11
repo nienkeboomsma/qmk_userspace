@@ -1,8 +1,8 @@
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define NO_ALT_REPEAT_KEY
 
-// Tap-hold configuration for home row mods.
-#define TAPPING_TERM 175
+// Tap-hold configuration for bottom row mods.
+#define TAPPING_TERM 160
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM_PER_KEY
 
