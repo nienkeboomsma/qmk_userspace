@@ -20,7 +20,7 @@ enum {
 // Tap once for KC_J, twice for KC_J and KC_K
 void jk(tap_dance_state_t *state, void *user_data) {
    if (state->count == 1) {
-      tap_code(KC_K);
+      tap_code(KC_J);
    }
 
    if (state->count == 2) {
