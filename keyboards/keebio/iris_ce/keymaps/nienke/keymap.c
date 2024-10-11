@@ -4,12 +4,32 @@
 #include QMK_KEYBOARD_H
 
 enum custom_layers {
-     _ALP,
-     _LFT,
-     _RGT,
-     _NAV,
-     _NUM,
-     _MSE
+   _ALP,
+   _LFT,
+   _RGT,
+   _NAV,
+   _NUM,
+   _MSE
+};
+
+// Tap dance declarations
+enum {
+   JK,
+};
+
+// Tap once for KC_J, twice for KC_J and KC_K
+void jk(tap_dance_state_t *state, void *user_data) {
+   register_code(KC_J);
+
+   if (state->count == 2) {
+      register_code(KC_K);
+      reset_tap_dance(state);
+   }
+}
+
+// Tap dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    [JK] = ACTION_TAP_DANCE_FN(jk),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -18,13 +38,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      QK_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_QUOT, KC_L,    KC_U,    KC_Y,    KC_SLSH, KC_SCLN,
+     KC_LCTL, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               TD(JK),  KC_L,    KC_U,    KC_Y,    KC_SLSH, KC_SCLN,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                               KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_RSFT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_GRAVE,LSFT_T(KC_Z),LCTL_T(KC_X),LALT_T(KC_C),LGUI_T(KC_D),KC_V,_______,
 
-                                                             _______,KC_K,RGUI_T(KC_H),RALT_T(KC_COMM),RCTL_T(KC_DOT),RSFT_T(KC_J),KC_BSLS,
+                                                         _______,KC_K,RGUI_T(KC_H),RALT_T(KC_COMM),RCTL_T(KC_DOT),RSFT_T(KC_QUOT),KC_BSLS,
   //└────────┴────────┴────┬───┴────┬───┴────────┴─┬──────┴───────┬┘        └┬───────┴──────┬─┴────────┴───┬────┴───┬────┴────────┴────────┘
                             TT(2),   LT(3, KC_ENT), LT(4, KC_TAB),            KC_BSPC,       LT(5, KC_SPC), TT(1)
   //                       └────────┴──────────────┴──────────────┘          └──────────────┴──────────────┴────────┘
