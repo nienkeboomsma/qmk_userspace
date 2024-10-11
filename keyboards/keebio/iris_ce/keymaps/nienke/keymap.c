@@ -31,7 +31,7 @@ void jk(tap_dance_state_t *state, void *user_data) {
 
 // Tap dance definitions
 tap_dance_action_t tap_dance_actions[] = {
-    [JK] = ACTION_TAP_DANCE_FN_ADVANCED(jk),
+    [JK] = ACTION_TAP_DANCE_FN_ADVANCED(jk, NULL, NULL),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
